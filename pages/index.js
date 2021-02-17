@@ -6,6 +6,8 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Create Next!</title>
+        <meta property="og:image" content="/ogp_large.png"/>
+        <meta name="twitter:card" content="summary_large_image"/>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
