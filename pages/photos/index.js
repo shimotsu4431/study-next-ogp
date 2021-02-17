@@ -1,16 +1,41 @@
-import Head from 'next/head'
+import useSWR from 'swr'
+import axios from "axios";
+import Link from "next/link"
+import getConfig from 'next/config'
+
+import CommonMeta from '../../components/CommonMeta'
 import styles from '../../styles/Home.module.css'
 
-export default function Post() {
+const { publicRuntimeConfig } = getConfig()
+const { API_URL } = publicRuntimeConfig
+
+export default function Photos() {
+  const fetcher = (url)=> axios(url).then(res => res.data)
+  const { data, error } = useSWR(`${API_URL}/photos`, fetcher)
+
+  if (error) return <div>failed to load</div>
+
   return (
     <div className={styles.container}>
-      <Head>
-        <title>post index</title>
-        <meta property="og:title" content="post index"/>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}></main>
+      <CommonMeta title="Photos" description="This is Photos page." />
+      <main>
+        <h1>Photos</h1>
+        {data && data.length >= 1 && (
+          <ul>
+            {data.slice(1, 10).map((item) => {
+              return (
+                <li>
+                  <Link href={`/photos/${item.id}`}>
+                    <a>
+                      {item.id}: {item.title}
+                    </a>
+                </Link>
+                </li>
+              )
+            })}
+          </ul>
+        )}
+      </main>
     </div>
   )
 }

@@ -19,25 +19,17 @@ export default function Home() {
     <div className={styles.container}>
       <CommonMeta />
       <main>
-        <h1>Photos</h1>
-        <Link href="/about">
-          <a>about</a>
-        </Link>
-        {data && data.length >= 1 && (
-          <ul>
-            {data.slice(1, 10).map((item) => {
-              return (
-                <li>
-                  <Link href={`/photos/${item.id}`}>
-                    <a>
-                      {item.id}: {item.title}
-                    </a>
-                </Link>
-                </li>
-              )
-            })}
-          </ul>
-        )}
+        <h1>Photo Appliation</h1>
+        <div>
+          <Link href="/about">
+            <a>about</a>
+          </Link>
+        </div>
+        <div>
+          <Link href="/photos">
+            <a>photos</a>
+          </Link>
+        </div>
       </main>
     </div>
   )
