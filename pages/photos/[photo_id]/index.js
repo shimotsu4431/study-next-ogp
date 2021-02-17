@@ -13,26 +13,29 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       photoId: parseInt(query.photo_id),
-      ogp: data.thumbnailUrl
+      src: data.url,
+      ogp: data.thumbnailUrl,
+      title: data.title
     },
   }
 }
 
-export default function Photo({ photoId, ogp }) {
+export default function Photo({ photoId, ogp, src, title }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>photo_id: {photoId}</title>
+        <title>Photo_id: {photoId}</title>
         <meta property="og:title" content={`photo_id: ${photoId}`} />
+        <meta property="og:description" content={`${title}`} />
         <meta property="og:image" content={ogp} />
         <meta name="twitter:card" content="summary"/>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          photo_Id: {photoId}
+          Photo_Id: {photoId}
         </h1>
+        <img src={src} alt={title} />
       </main>
     </div>
   )

@@ -10,11 +10,7 @@ export default function Post() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          post index
-        </h1>
-      </main>
+      <main className={styles.main}></main>
     </div>
   )
 }
