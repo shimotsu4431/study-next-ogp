@@ -19,13 +19,13 @@ export default function Photos() {
     <div className={styles.container}>
       <CommonMeta title="Photos" description="This is Photos page." />
       <main>
-        <h1>Photos</h1>
+        <h1>Photos - SSR</h1>
         {data && data.length >= 1 && (
           <ul>
             {data.slice(1, 10).map((item) => {
               return (
                 <li>
-                  <Link href={`/photos/${item.id}`}>
+                  <Link href={`/photos-ssr/${item.id}`}>
                     <a>
                       {item.id}: {item.title}
                     </a>

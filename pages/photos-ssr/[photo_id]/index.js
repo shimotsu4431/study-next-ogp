@@ -24,17 +24,18 @@ export default function Photo({ photoId, ogp, src, title }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Photo_id: {photoId}</title>
-        <meta property="og:title" content={`photo_id: ${photoId}`} />
+        <title>【SSR】Photo_id: {photoId}</title>
+        <meta property="og:title" content={`【SSR】photo_id: ${photoId}`} />
         <meta property="og:description" content={`${title}`} />
         <meta property="og:image" content={ogp} />
         <meta name="twitter:card" content="summary"/>
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        <h1>Photos - SSR</h1>
+        <h2>
           Photo_Id: {photoId}
-        </h1>
+        </h2>
         <img src={src} alt={title} />
       </main>
     </div>

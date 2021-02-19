@@ -26,8 +26,13 @@ export default function Home() {
           </Link>
         </div>
         <div>
-          <Link href="/photos">
-            <a>photos</a>
+          <Link href="/photos-ssr">
+            <a>photos - SSR</a>
+          </Link>
+        </div>
+        <div>
+          <Link href="/photos-client">
+            <a>photos - client</a>
           </Link>
         </div>
       </main>
