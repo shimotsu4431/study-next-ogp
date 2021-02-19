@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import axios from "axios";
 import Head from 'next/head'
@@ -8,13 +9,12 @@ const { publicRuntimeConfig } = getConfig()
 const { API_URL } = publicRuntimeConfig
 export const fetcher = (url)=> axios(url).then(res => res.data)
 
-Photo.getInitialProps = async ({ query }) => {
-  return { query };
-};
-
 export default function Photo({ query }) {
+  const router = useRouter()
+  const { photo_id } = router.query
+
   const fetcher = (url)=> axios(url).then(res => res.data)
-  const { data } = useSWR(`${API_URL}/photos/${query.photo_id}`, fetcher, {
+  const { data } = useSWR(`${API_URL}/photos/${photo_id}`, fetcher, {
     refreshInterval: 0
   })
 
@@ -23,8 +23,8 @@ export default function Photo({ query }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>【Client】Photo_id: {query.photo_id}</title>
-        <meta property="og:title" content={`【Client】photo_id: ${query.photo_id}`} />
+        <title>【Client】Photo_id: {photo_id}</title>
+        <meta property="og:title" content={`【Client】photo_id: ${photo_id}`} />
         <meta property="og:description" content={data.title} />
         <meta property="og:image" content={data.url} />
         <meta name="twitter:card" content="summary"/>
@@ -33,7 +33,7 @@ export default function Photo({ query }) {
       <main className={styles.main}>
         <h1>Photos - client</h1>
         <h2>
-          Photo_Id: {query.photo_id}
+          Photo_Id: {photo_id}
         </h2>
         <img src={data.url} alt={data.title} />
       </main>
