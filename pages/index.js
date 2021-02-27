@@ -27,12 +27,12 @@ export default function Home() {
         </div>
         <div>
           <Link href="/photos-ssr">
-            <a>photos - SSR</a>
+            <a>Photos - SSR</a>
           </Link>
         </div>
         <div>
           <Link href="/photos-client">
-            <a>photos - client</a>
+            <a>Photos - client</a>
           </Link>
         </div>
       </main>
