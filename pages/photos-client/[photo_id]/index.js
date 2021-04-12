@@ -26,7 +26,7 @@ export default function Photo({ query }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>XXXXXXXXXXXX</title>
+        <title>{`【Client】photo_id: ${photo_id}`}</title>
         <meta property="og:title" content={`【Client】photo_id: ${photo_id}`} />
         <meta property="og:description" content={data.title} />
         <meta property="og:image" content={data.url} />
