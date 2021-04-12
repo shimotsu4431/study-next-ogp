@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import axios from "axios";
 import Head from 'next/head'
@@ -9,9 +8,13 @@ const { publicRuntimeConfig } = getConfig()
 const { API_URL } = publicRuntimeConfig
 export const fetcher = (url)=> axios(url).then(res => res.data)
 
+export async function getServerSideProps({ query }) {
+  return { props: { query } }
+}
+
 export default function Photo({ query }) {
-  const router = useRouter()
-  const { photo_id } = router.query
+  console.log("query", query.photo_id)
+  const { photo_id } = query
 
   const fetcher = (url)=> axios(url).then(res => res.data)
   const { data } = useSWR(`${API_URL}/photos/${photo_id}`, fetcher, {
