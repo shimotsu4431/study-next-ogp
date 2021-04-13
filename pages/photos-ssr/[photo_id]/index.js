@@ -24,7 +24,7 @@ export default function Photo(props) {
     <div className={styles.container}>
       <Head>
         <title>【SSR】Photo_id: {props.query.photo_id}</title>
-        <meta property="og:title" content={`【SSR】photo_id: ${props.query.photo_id}`} />
+        <meta property="og:title" content={`【SSR】photo_id: ${props.query.photo_id}`} key="title" />
         <meta property="og:description" content={`${data.title}`} />
         <meta property="og:image" content={data.thumbnailUrl} />
         <meta name="twitter:card" content="summary"/>

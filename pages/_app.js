@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Photo Appliation</title>
-        <meta property="og:title" content="Photo Appliation" />
+        <meta property="og:title" content="Photo Appliation" key="title" />
         <meta property="og:description" content="This is Photo Appliation." />
       </Head>
       <Component {...pageProps} />
