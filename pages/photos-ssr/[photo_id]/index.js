@@ -16,8 +16,7 @@ export async function getServerSideProps({ query }) {
 export default function Photo(props) {
   const initialData = props.data
   const { data } = useSWR(`${API_URL}/todos`, fetcher, {
-    initialData,
-    revalidateOnFocus : false
+    initialData
   })
 
   return (

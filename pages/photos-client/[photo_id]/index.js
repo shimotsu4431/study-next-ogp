@@ -13,9 +13,7 @@ export default function Photo() {
   const { photo_id } = router.query
 
   const fetcher = (url)=> axios(url).then(res => res.data)
-  const { data } = useSWR(`${API_URL}/photos/${photo_id}`, fetcher, {
-    refreshInterval: 0
-  })
+  const { data } = useSWR(`${API_URL}/photos/${photo_id}`, fetcher)
 
   if (!data) return <div>loading...</div>
 
